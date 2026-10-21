@@ -1,0 +1,30 @@
+﻿body {
+    direction: rtl;
+    display: flex;
+}
+.register {
+    display: none;
+    flex-direction: column;
+    width: 20vw;
+    margin: 1vh;
+    padding: 1vh;
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    margin: 1vh;
+    padding: 1vh;
+
+}
+
+button {
+    margin-top: 1vh;
+}
+#dis {
+    color: blue;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer
+}
