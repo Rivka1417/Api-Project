@@ -75,9 +75,26 @@ namespace hw_3.Controllers
 
         // PUT api/<LoginController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<UserRegeister> Put(int id, [FromBody] UserRegeister userToUpdate)
         {
-
+            string textToReplace = string.Empty;
+            using (StreamReader reader = System.IO.File.OpenText(filePath))
+            {
+                string currentUserInFile;
+                while ((currentUserInFile = reader.ReadLine()) != null)
+                {
+                    UserRegeister user = JsonSerializer.Deserialize<UserRegeister>(currentUserInFile);
+                    if (user.UserId == id)
+                        textToReplace = currentUserInFile;
+                }
+            }
+            if (textToReplace != string.Empty)
+            {
+                string text = System.IO.File.ReadAllText(filePath);
+                text = text.Replace(textToReplace, JsonSerializer.Serialize(userToUpdate));
+                System.IO.File.WriteAllText(filePath, text);
+            }
+            return CreatedAtAction(nameof(Get), userToUpdate);
         }
 
         // DELETE api/<LoginController>/5

@@ -28,3 +28,8 @@ button {
     text-decoration: underline;
     cursor: pointer
 }
+#update {
+    margin-right:2.5vh;
+    margin-top:1vh;
+    display: none;
+}

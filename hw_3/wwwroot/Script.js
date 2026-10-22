@@ -9,6 +9,8 @@ async function reg() {
 
     const lname = document.getElementById("lname").value
 
+    
+
     const user = {
         Email: mail,
         Password: password,
@@ -37,6 +39,8 @@ async function log() {
 
     const password = document.getElementById("pas").value
 
+    const update = document.getElementById("update")
+
     const user = {
         Email: mail,
         Password: password,
@@ -50,8 +54,11 @@ async function log() {
         },
         body: JSON.stringify(user)
     });
+    const dataPost = await responsePost.json()
     if (responsePost.ok) {
+        sessionStorage.setItem("user",JSON.stringify(dataPost))
         alert("התחברת בהצלחה")
+        update.style.display = "flex"
     }
     else {
         alert(responsePost.status)
