@@ -6,10 +6,12 @@ using Microsoft.OpenApi;
 
 namespace hw_3.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
+        string filePath = "./users.txt";
         // GET: api/<LoginController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -19,11 +21,22 @@ namespace hw_3.Controllers
 
         // GET api/<LoginController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<UserRegeister> Get(int id)
         {
-            return "value";
+            using (StreamReader reader = System.IO.File.OpenText(filePath))
+            {
+                string? currentUserInFile;
+                while ((currentUserInFile = reader.ReadLine()) != null)
+                {
+                    UserRegeister user = JsonSerializer.Deserialize<UserRegeister>(currentUserInFile);
+                    if (user.UserId == id)
+                        return CreatedAtAction(nameof(Get), user);
+                }
+                return NotFound();
+            }
+            
         }
-        string filePath = "./users.txt";
+        
 
         // POST api/<LoginController>
         [HttpPost]

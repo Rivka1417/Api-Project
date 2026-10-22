@@ -1,9 +1,12 @@
-﻿namespace hw_3
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace hw_3
 {
     public class UserLogin
     {
+        [EmailAddress]
         public string Email { get; set; }
-
+        [Required]
         public string Password { get; set; }
     }
 }
