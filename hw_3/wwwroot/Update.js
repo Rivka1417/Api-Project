@@ -20,8 +20,9 @@ const update = async () => {
         Password: password.value,
         FirstName: fname.value,
         LastName: lname.value,
+        UserId: user.userId
     }
-    const responsePut = await fetch(`api/Login/${user.userId}`, {
+    const responsePut = await fetch(`api/users/${user.userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

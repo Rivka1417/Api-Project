@@ -2,7 +2,7 @@
 
 namespace hw_3
 {
-    public class UserRegeister
+    public class User
     {
         public int UserId { get; set; }
         [EmailAddress]

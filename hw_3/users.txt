@@ -5,3 +5,8 @@
 {"UserId":5,"Email":"","Password":"","FirstName":"","LastName":""}
 {"UserId":6,"Email":"rivka51417@gmail.com","Password":"123456","FirstName":"\u05E8\u05D1\u05E7\u05D4","LastName":"\u05DC\u05D5\u05D9"}
 {"UserId":7,"Email":"chanalevy95@gmail.com","Password":"1234","FirstName":"Chana","LastName":"Levy"}
+{"UserId":0,"Email":"chanalevy@gmail.com","Password":"123","FirstName":"chana","LastName":"levy"}
+{"UserId":0,"Email":"a@b.c","Password":"12","FirstName":"r","LastName":"l"}
+{"UserId":0,"Email":"ab@a.b","Password":"1234","FirstName":"ri","LastName":"l"}
+{"UserId":0,"Email":"a@b.c","Password":"1234","FirstName":"ab","LastName":"b"}
+{"UserId":12,"Email":"r@l.r","Password":"1234","FirstName":"r","LastName":"l"}

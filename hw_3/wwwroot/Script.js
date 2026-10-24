@@ -19,7 +19,7 @@ async function reg() {
     }
 
 
-    const responsePost = await fetch('api/Login', {
+    const responsePost = await fetch('api/users', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -39,7 +39,6 @@ async function log() {
 
     const password = document.getElementById("pas").value
 
-    const update = document.getElementById("update")
 
     const user = {
         Email: mail,
@@ -47,7 +46,7 @@ async function log() {
     }
 
 
-    const responsePost = await fetch('api/Login/login', {
+    const responsePost = await fetch('api/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,8 +56,7 @@ async function log() {
     const dataPost = await responsePost.json()
     if (responsePost.ok) {
         sessionStorage.setItem("user",JSON.stringify(dataPost))
-        alert("התחברת בהצלחה")
-        update.style.display = "flex"
+        window.location.href ="Update.html"
     }
     else {
         alert(responsePost.status)
