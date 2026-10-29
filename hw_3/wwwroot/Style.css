@@ -33,3 +33,6 @@ button {
     margin-top:1vh;
     display: none;
 }
+progress{
+    display:none
+}

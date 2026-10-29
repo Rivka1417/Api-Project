@@ -66,3 +66,20 @@ const l = document.querySelector(".register")
 const Display = () => {
     l.style.display = "flex"
 }
+
+const checkPass = async () => {
+
+    const password = document.getElementById("pass").value
+    let progress = document.getElementById("progress")
+    progress.style.display="flex"
+
+    const responsePost = await fetch('api/password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(password)
+    });
+
+    progress.value = await responsePost.text()
+}
