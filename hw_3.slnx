@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="Entity/Entity.csproj" Id="f43857a3-095f-4ba6-9ec7-f628e8bb19ce" />
   <Project Path="hw_3/hw_3.csproj" />
+  <Project Path="repository/repository.csproj" Id="947bf3bb-627c-4fe4-a1a4-c78867f3def8" />
+  <Project Path="Service/Service.csproj" Id="0b200f5c-c5df-422a-b391-91eb9531ee7d" />
 </Solution>

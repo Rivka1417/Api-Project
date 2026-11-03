@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace hw_3
+namespace Entity
 {
     public class UserLogin
     {
