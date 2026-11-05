@@ -3,9 +3,14 @@ using repository;
 using Entity;
 namespace Service
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        UserRepository repository=new UserRepository();
+        private IUserRepository repository;
+
+        public UserService(IUserRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public User GetUserById(int id)
         {

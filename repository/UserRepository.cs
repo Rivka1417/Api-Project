@@ -2,7 +2,7 @@
 using Entity;
 namespace repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         string filePath = "../hw_3/users.txt";
         public User GetUserById(int id)
@@ -47,7 +47,7 @@ namespace repository
             return null;
         }
 
-        public User UpdateUser(int id ,User userToUpdate)
+        public User UpdateUser(int id, User userToUpdate)
         {
             string textToReplace = string.Empty;
             using (StreamReader reader = System.IO.File.OpenText(filePath))

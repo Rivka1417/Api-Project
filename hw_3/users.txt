@@ -11,3 +11,5 @@
 {"UserId":0,"Email":"a@b.c","Password":"1234","FirstName":"ab","LastName":"b"}
 {"UserId":12,"Email":"r@l.r","Password":"1234","FirstName":"r","LastName":"l"}
 {"UserId":13,"Email":"ruvka@gmail.com","Password":"Rr123#!@","FirstName":"rivka","LastName":"choen"}
+{"UserId":14,"Email":"ruvka@gmail.com","Password":"1234659","FirstName":"rivka","LastName":"levy"}
+{"UserId":15,"Email":"rivka@gmail.com","Password":"1234","FirstName":"rivka","LastName":"levy"}

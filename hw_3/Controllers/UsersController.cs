@@ -14,7 +14,12 @@ namespace hw_3.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        UserService userService=new UserService();
+        readonly private IUserService userService;
+
+        public UsersController(IUserService service)
+        {
+            this.userService = service;
+        }
 
         // GET: api/<LoginController>
         [HttpGet]
