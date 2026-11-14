@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
-using Microsoft.OpenApi;
+//fix: removed the unused usings Microsoft.Extensions.Configuration.UserSecrets and Microsoft.OpenApi
 using Service;
 using Entity;
 
@@ -30,6 +29,7 @@ namespace hw_3.Controllers
 
         // GET api/<LoginController>/5
         [HttpGet("{id}")]
+        //The assignment asks GET by id to return 200 OK: CreatedAtAction returns 201, so try Ok(user) instead
         public ActionResult<User> Get(int id)
         {
             User user = userService.GetUserById(id);
@@ -49,6 +49,7 @@ namespace hw_3.Controllers
 
         [HttpPost("login")]
 
+        //The assignment asks a login with a wrong password to return 204 NoContent: NotFound returns 404, so check what to return here
         public IActionResult Post([FromBody] UserLogin userLogin)
         {
             User user = userService.Login(userLogin);
@@ -59,6 +60,7 @@ namespace hw_3.Controllers
 
         // PUT api/<LoginController>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): CreatedAtAction returns 201, so return Ok() at the end instead
         public ActionResult<User> Put(int id, [FromBody] User userToUpdate)
         {
             return CreatedAtAction(nameof(Get),userService.UpdateUser(id,userToUpdate));
