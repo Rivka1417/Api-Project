@@ -4,7 +4,8 @@ namespace repository
 {
     public class UserRepository : IUserRepository
     {
-        string filePath = "../hw_3/users.txt";
+        //fix: readonly, the path never changes
+        readonly string filePath = "../hw_3/users.txt";
         public User GetUserById(int id)
         {
             using (StreamReader reader = System.IO.File.OpenText(filePath))
