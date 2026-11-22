@@ -63,6 +63,7 @@ async function log() {
     }
 }
 const l = document.querySelector(".register")
+//In JavaScript, function names are written in camelCase: display
 const Display = () => {
     l.style.display = "flex"
 }

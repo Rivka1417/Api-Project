@@ -24,6 +24,7 @@ namespace hw_3.Controllers
 
         // POST api/<PasswordController>
         [HttpPost]
+        //The assignment asks this controller to take the password service's interface and call it: where is the service it should use?
         public int Post([FromBody] string password)
         {
             var strength=Zxcvbn.Core.EvaluatePassword(password);
