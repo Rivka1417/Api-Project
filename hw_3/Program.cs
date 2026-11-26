@@ -1,8 +1,17 @@
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
+using Org.BouncyCastle.Security;
 using repository;
 using repository.Entity;
 using Service;
 var builder = WebApplication.CreateBuilder(args);
+
+//private readonly ILogger<Program> _logger;
+//public Program(ILogger<Program> logger)
+//{
+//    _logger= logger;
+//}
 
 // Add services to the container.
 
@@ -26,7 +35,12 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+builder.Services.AddScoped<IPasswordService, PasswordService>();
+
+
 builder.Services.AddDbContext<MyStoreContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("home")),ServiceLifetime.Transient);
+
+builder.Host.UseNLog();
 
 var app = builder.Build();
 

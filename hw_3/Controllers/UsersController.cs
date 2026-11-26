@@ -1,9 +1,10 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration.UserSecrets;
 //using Microsoft.OpenApi;
 using Service;
-using Entity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +16,12 @@ namespace hw_3.Controllers
     public class UsersController : ControllerBase
     {
         readonly private IUserService userService;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(IUserService service)
+        public UsersController(IUserService service, ILogger<UsersController> logger)
         {
             this.userService = service;
+            _logger = logger;
         }
 
         // GET: api/<LoginController>
@@ -43,7 +46,14 @@ namespace hw_3.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] User user)
         {
-             return CreatedAtAction(nameof(Get), userService.AddUser(user));
+            try
+            {
+                return CreatedAtAction(nameof(Get), userService.AddUser(user));
+            }
+            catch(ValidationException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
 
@@ -51,6 +61,8 @@ namespace hw_3.Controllers
 
         public async Task<IActionResult> Post([FromBody] UserLogin userLogin)
         {
+            _logger.LogInformation($"Login attempted with User Name {userLogin.Email} and password {userLogin.Password}");
+
             User user =await userService.Login(userLogin);
             if (user != null)
                 return CreatedAtAction(nameof(Get), user);

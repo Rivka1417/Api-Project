@@ -1,15 +1,19 @@
-﻿using System.Text.Json;
-using repository;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using Entity;
+using repository;
 namespace Service
 {
     public class UserService : IUserService
     {
         private IUserRepository repository;
 
-        public UserService(IUserRepository repository)
+        private IPasswordService passwordService;
+
+        public UserService(IUserRepository repository, IPasswordService passwordService)
         {
             this.repository = repository;
+            this.passwordService = passwordService;
         }
 
         public async Task<User> GetUserById(int id)
@@ -19,6 +23,8 @@ namespace Service
 
         public User AddUser(User user)
         {
+            if (this.passwordService.CheckPasswordStrength(user.Password) < 2)
+                throw new ValidationException("The password is too weak");
             return repository.AddUser(user);
         }
 

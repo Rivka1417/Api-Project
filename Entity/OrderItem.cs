@@ -16,6 +16,7 @@ public partial class OrderItem
 
     public int Quentity { get; set; }
 
+    [JsonIgnore]
     public virtual Order Order { get; set; }
 
     public virtual Product Product { get; set; }
